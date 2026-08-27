@@ -9,7 +9,7 @@ const oocReveal = async ({ shortcut, ack, client, logger }) => {
         // channel.name       -> channel name (sometimes)
         await ack();
         console.log('=====================',JSON.stringify(message, null, 2))
-        const regex = /"channel_id": "([DC][A-Z0-9]{10})"/g;
+        const regex = /"channel_id": "([DC][A-Z0-9]{8,10})"/g;
         const ids=Array.from(JSON.stringify(message, null, 2).matchAll(regex), match => match[1]);
         await client.views.open({
             trigger_id,
