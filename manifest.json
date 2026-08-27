@@ -18,10 +18,10 @@
     },
     "shortcuts": [
       {
-        "name": "Reveal channels (OOC)",
+        "name": "Get forward/OOC channel",
         "type": "message",
         "callback_id": "ooc_reveal",
-        "description": "Reveal channels (OOC)"
+        "description": "Reveal forwarded/OOC channel/DM ID and name"
       }
     ],
     "slash_commands": [
