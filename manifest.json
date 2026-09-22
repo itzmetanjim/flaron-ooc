@@ -4,7 +4,9 @@
     "minor_version": 1
   },
   "display_information": {
-    "name": "flaron-but-ooc"
+    "name": "flaron-but-ooc",
+    "description":"Use the \"Get forward/OOC channel\" shortcut in a message with a forward to show the channel of the forwarded message.",
+    "long_description":"Use the \"Get forward/OOC channel\" shortcut in a message with a forward (eg an OOC message) to show the channel (ID is always shown, and name is also shown when known) where the forwarded message/s was/were sent. This also works for message links and mentioned channels."
   },
   "features": {
     "app_home": {
