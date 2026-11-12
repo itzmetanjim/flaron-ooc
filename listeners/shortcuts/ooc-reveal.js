@@ -8,7 +8,7 @@ async function flaron(id){
             return `*[error ${res.status}]*`
         }
         try{
-            return (await res.json()).name || "*[not found :sob:]*"
+            return "#"+(await res.json()).name || "*[not found :sob:]*"
         }catch(e){
             console.log(e)
             return "*[somehow a json parsing error????? :whar:]*"
@@ -31,9 +31,11 @@ const oocReveal = async ({ shortcut, ack, client, logger }) => {
         console.log('=====================',JSON.stringify(message, null, 2))
         const regex = /"channel_id": "([DC][A-Z0-9]{8,10})"/g;
         //https://flaron.halceon.dev/channel/<ID>
-        
+        const sender= (message.metadata?.event_type === "out_of_context_posted" ? (message.metadata?.event_payload?.submitter || message.user) : (message.user)) || "unknown"
+        const fsenders= message.attachments.map((e)=>{return e.author_id})
         const ids=Array.from(JSON.stringify(message, null, 2).matchAll(regex), match => match[1]);
-        const names=await Promise.all(ids.map(flaron));
+        var names=await Promise.all(ids.map(flaron));
+        names=names.map((e,i)=>{return (e==="[dm id]"?`[dm between <@${sender}> and <@${fsenders[i]}>]`:e)})
         await client.views.open({
             trigger_id,
             view: {
@@ -48,7 +50,7 @@ const oocReveal = async ({ shortcut, ack, client, logger }) => {
                         type: 'section',
                         text: {
                             type: 'mrkdwn',
-                            text: `*IDs:* ${ids}\n*Names (from flaron API):* ${names}`,
+                            text: `*IDs:* ${ids}\n*Names:* ${names}\n_channel names are from the Flaron API_`,
                         },
                     }
                 ],
