@@ -16,7 +16,6 @@ WorkingDirectory=$cwd
 ExecStart=$node app.js
 Restart=on-failure
 RestartSec=5
-Environment=NODE_ENV=production
 
 [Install]
 WantedBy=multi-user.target
