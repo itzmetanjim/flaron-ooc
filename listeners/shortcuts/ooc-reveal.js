@@ -8,7 +8,7 @@ async function flaron(id){
             return `*[error ${res.status}]*`
         }
         try{
-            return "#"+(await res.json()).name || "*[not found :sob:]*"
+            return +(await res.json()).name || "*[not found :sob:]*"
         }catch(e){
             console.log(e)
             return "*[somehow a json parsing error????? :whar:]*"
