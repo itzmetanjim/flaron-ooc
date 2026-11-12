@@ -13,3 +13,10 @@ this is a slack bot for the Hack Club workspace that allows you to use the flaro
 ![image](https://user-cdn.hackclub-assets.com/01a1ce7f-be54-79e7-9c52-f0e8e9a5add2/screenshot_2026-11-12_at_12.41.34___pm.png)
 if its a DM it will show it like so: (the users may not be shown sometimes)
 ![image](https://cdn.hackclub.com/01a1ce9e-ed57-70af-bb63-366b747da718/oq5zn2w.png)
+
+
+## how to host it yourself
+
+1. use the `manifest.json` to install the app into your workspace ([https://api.slack.com/apps](https://api.slack.com/apps) -> Create New App -> Paste a Manifest, then follow the instructions)
+2. do `npm install` here (you need node js)
+3. run `node app.js` without NODE_ENV=production
