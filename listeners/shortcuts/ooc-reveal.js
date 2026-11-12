@@ -33,7 +33,8 @@ const oocReveal = async ({ shortcut, ack, client, logger }) => {
         //https://flaron.halceon.dev/channel/<ID>
         const sender= (message.metadata?.event_type === "out_of_context_posted" ? (message.metadata?.event_payload?.submitter || message.user) : (message.user)) || "unknown"
         const fsenders= message.attachments.map((e)=>{return e.author_id})
-        const ids=Array.from(JSON.stringify(message, null, 2).matchAll(regex), match => match[1]);
+        //const ids=Array.from(JSON.stringify(message, null, 2).matchAll(regex), match => match[1]);
+        const ids=message.attachments.map((e)=>{return e.channel_id})
         var names=await Promise.all(ids.map(flaron));
         names=names.map((e,i)=>{return (e==="[dm id]"?`[dm between <@${sender}> and <@${fsenders[i]}>]`:e)})
         await client.views.open({
