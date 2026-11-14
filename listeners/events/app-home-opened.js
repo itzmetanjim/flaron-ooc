@@ -12,14 +12,14 @@ const appHomeOpenedCallback = async ({ client, event, logger }) => {
             type: 'section',
             text: {
               type: 'mrkdwn',
-              text: `*Welcome home, <@${event.user}> :house:*`,
+                text: `*Use this bot by using the "Get forward/OOC channel" message action on a message.*`,
             },
           },
           {
             type: 'section',
             text: {
               type: 'mrkdwn',
-              text: 'Learn how home tabs can be more useful and interactive <https://api.slack.com/surfaces/tabs/using|*in the documentation*>.',
+              text: 'See the README of https://github.com/itzmetanjim/flaron-ooc for a detailed guide.',
             },
           },
         ],
